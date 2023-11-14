@@ -8,6 +8,7 @@ namespace Contacter.Domain.Models
 {
     public  class Contact : Auditable
     {
+        public int CompanyId { get; set; }
         public string ContactName { get; set; }
         public string ContactEmail { get; set; }
         public string ContactDescription { get; set; }

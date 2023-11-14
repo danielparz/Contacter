@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Contacter.Domain.Enums
 {
-    public enum AdressTypeEnum
+    public enum AddressTypeEnum
     {
         Main = 0,
         ContactAdress = 1,

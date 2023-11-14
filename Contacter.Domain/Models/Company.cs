@@ -12,8 +12,8 @@ namespace Contacter.Domain.Models
         public string NIP { get; set; }
         public string REGON { get; set; }
 
-        public virtual User User { get; set; }
-        public virtual ICollection<Adress> Adresses { get; set; }
+        //public virtual User User { get; set; }
+        public virtual ICollection<Address> Addresses { get; set; }
         public virtual ICollection<Contact> Contacts { get; set; }
     }
 }

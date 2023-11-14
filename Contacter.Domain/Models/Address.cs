@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace Contacter.Domain.Models
 {
-    public class Adress : Auditable
+    public class Address : Auditable
     {
         public int CompanyId { get; set; }
         public string PostCode { get; set; }
         public string City { get; set; }
         public string Street { get; set; }
         public string Building { get; set; }
-        public AdressTypeEnum AdressType { get; set; }
+        public AddressTypeEnum AddressType { get; set; }
 
         public virtual Company Company { get; set; }
     }

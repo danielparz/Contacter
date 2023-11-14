@@ -1,0 +1,19 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Contacter.Domain.Models
+{
+    public class Company : Auditable
+    {
+        public string CompanyName { get; set; }
+        public string NIP { get; set; }
+        public string REGON { get; set; }
+
+        public User User { get; set; }
+        public virtual ICollection<Adress> Adresses { get; set; }
+        public virtual ICollection<Contact> Contacts { get; set; }
+    }
+}

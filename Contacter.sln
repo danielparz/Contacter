@@ -3,13 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34221.43
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contacter.Web", "Contacter.Web\Contacter.Web.csproj", "{DA79B3AD-AF38-4710-80E4-06613304841C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contacter.Web", "Contacter.Web\Contacter.Web.csproj", "{DA79B3AD-AF38-4710-80E4-06613304841C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contacter.Domain", "Contacter.Domain\Contacter.Domain.csproj", "{CC8EB697-935D-4C0E-8F1F-95A56732DFEF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contacter.Domain", "Contacter.Domain\Contacter.Domain.csproj", "{CC8EB697-935D-4C0E-8F1F-95A56732DFEF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contacter.Application", "Contacter.Application\Contacter.Application.csproj", "{2D2A6A25-CDAE-494F-964D-CA99F66AE43C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contacter.Application", "Contacter.Application\Contacter.Application.csproj", "{2D2A6A25-CDAE-494F-964D-CA99F66AE43C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contacter.Infrastructure", "Contacter.Infrastructure\Contacter.Infrastructure.csproj", "{D14048B8-B322-46EC-8537-9716D3E86050}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contacter.Infrastructure", "Contacter.Infrastructure\Contacter.Infrastructure.csproj", "{D14048B8-B322-46EC-8537-9716D3E86050}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{45B91782-0612-4F93-AEC9-17724021A580}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{63947F65-9EF1-4600-A5FD-1F363355AE3C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{67F998DD-A4D9-49FA-882F-580E7183478E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{8C5AF521-614F-4DFF-B99D-44775E87CB25}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,6 +44,12 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DA79B3AD-AF38-4710-80E4-06613304841C} = {8C5AF521-614F-4DFF-B99D-44775E87CB25}
+		{CC8EB697-935D-4C0E-8F1F-95A56732DFEF} = {63947F65-9EF1-4600-A5FD-1F363355AE3C}
+		{2D2A6A25-CDAE-494F-964D-CA99F66AE43C} = {45B91782-0612-4F93-AEC9-17724021A580}
+		{D14048B8-B322-46EC-8537-9716D3E86050} = {67F998DD-A4D9-49FA-882F-580E7183478E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {78B0924D-E0D1-4188-B3FC-0FD064FB45C4}

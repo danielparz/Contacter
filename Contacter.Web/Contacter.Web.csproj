@@ -15,4 +15,9 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.13" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Contacter.Application\Contacter.Application.csproj" />
+    <ProjectReference Include="..\Contacter.Infrastructure\Contacter.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>

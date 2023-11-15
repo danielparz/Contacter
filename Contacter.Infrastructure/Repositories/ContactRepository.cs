@@ -1,4 +1,5 @@
 ﻿using Contacter.Domain.Enums;
+using Contacter.Domain.Interfaces;
 using Contacter.Domain.Models;
 using Contacter.Infrastructure.Data;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Contacter.Infrastructure.Repositories
 {
-    public class ContactRepository
+    public class ContactRepository : IContactRepository
     {
         private readonly Context _context;
 

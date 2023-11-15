@@ -23,12 +23,12 @@ namespace Contacter.Infrastructure
         {
             base.OnModelCreating(builder);
 
-            builder.Entity<Company>()
-                .HasMany(a => a.Addresses).WithOne(b => b.Company)
+            builder.Entity<Address>()
+                .HasOne(a => a.Company).WithMany(b => b.Addresses)
                 .HasForeignKey(c => c.CompanyId);
-            builder.Entity<Company>()
-                .HasMany(a => a.Contacts).WithOne(b => b.Company)
-                .HasForeignKey(c => c.CompanyId);            
+            builder.Entity<Contact>()
+                .HasOne(a => a.Company).WithMany(b =>b.Contacts)
+                .HasForeignKey(c =>c.CompanyId);
         }
     }
 }

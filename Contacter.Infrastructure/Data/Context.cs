@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Contacter.Infrastructure
+namespace Contacter.Infrastructure.Data
 {
     public class Context : IdentityDbContext
     {
@@ -16,7 +16,7 @@ namespace Contacter.Infrastructure
         public DbSet<Contact> Contacts { get; set; }
 
         public Context(DbContextOptions options) : base(options)
-        {            
+        {
         }
 
         protected override void OnModelCreating(ModelBuilder builder)
@@ -27,8 +27,8 @@ namespace Contacter.Infrastructure
                 .HasOne(a => a.Company).WithMany(b => b.Addresses)
                 .HasForeignKey(c => c.CompanyId);
             builder.Entity<Contact>()
-                .HasOne(a => a.Company).WithMany(b =>b.Contacts)
-                .HasForeignKey(c =>c.CompanyId);
+                .HasOne(a => a.Company).WithMany(b => b.Contacts)
+                .HasForeignKey(c => c.CompanyId);
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Contacter.Domain.Models
 {
-    public class Company : Auditable
+    public class Company : Entity
     {
         public string CompanyName { get; set; }
         public string NIP { get; set; }

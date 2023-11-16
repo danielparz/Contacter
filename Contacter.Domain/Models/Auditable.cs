@@ -9,7 +9,6 @@ namespace Contacter.Domain.Models
 {
     public class Auditable
     {
-        public int Id { get; set; }
         public DateTime? ModifiedDate { get; set; }
         public User? ModifiedBy { get; set; }
         public bool IsDeleted { get; set; }

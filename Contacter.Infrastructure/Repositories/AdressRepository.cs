@@ -10,41 +10,25 @@ using System.Threading.Tasks;
 
 namespace Contacter.Infrastructure.Repositories
 {
-    public class AddressRepository : IAddressRepository
+    public class AddressRepository : BaseRepository<Address>, IAddressRepository
     {
-        private readonly Context _context;
-
-        public AddressRepository(Context context)
+        public AddressRepository(Context context) : base(context)
         {
-            _context = context;
         }
 
         public void DeleteAddress(int addressId)
         {
-            var address = _context.Addresses.Find(addressId);
-            if (address != null)
-            {
-                _context.Addresses.Remove(address);
-                _context.SaveChanges();
-            }
+            DeleteObject(addressId);
         }
 
         public int AddAddress(Address address)
         {
-            _context.Addresses.Add(address);
-            _context.SaveChanges();
-            return address.Id;
+            return AddObject(address);
         }
 
         public int UpdateAddress(Address address)
         {
-            var tempAddress = _context.Addresses.FirstOrDefault(c => c.Id == address.Id);
-            if (tempAddress != null)
-            {
-                tempAddress = address;
-                _context.SaveChanges();
-            }
-            return address.Id;
+            return UpdateObject(address);
         }
 
         public IQueryable<Address> GetAddressesByCompanyId(int companyId)
@@ -61,8 +45,7 @@ namespace Contacter.Infrastructure.Repositories
 
         public Address? GetAddressById(int addressId)
         {
-            var address = _context.Addresses.FirstOrDefault(c => c.Id == addressId);
-            return address;
+            return GetObjectById(addressId);
         }
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Contacter.Domain.Models
 {
-    public class Address : Auditable
+    public class Address : Entity
     {
         public int CompanyId { get; set; }
         public string PostCode { get; set; }

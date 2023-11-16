@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Contacter.Domain.Models
+namespace Contacter.Domain.Enums
 {
-    public class Entity : Auditable
+    public enum AddressType
     {
-        public int Id { get; set; }
+        Main = 0,
+        ContactAdress = 1,
     }
 }

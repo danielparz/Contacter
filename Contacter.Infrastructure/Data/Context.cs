@@ -1,4 +1,5 @@
 ﻿using Contacter.Domain.Models;
+using Contacter.Domain.Models.Concrete;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;

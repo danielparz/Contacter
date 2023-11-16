@@ -1,11 +1,12 @@
 ﻿using Contacter.Domain.Enums;
+using Contacter.Domain.Models.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Contacter.Domain.Models
+namespace Contacter.Domain.Models.Concrete
 {
     public class Address : Entity
     {
@@ -14,7 +15,7 @@ namespace Contacter.Domain.Models
         public string City { get; set; }
         public string Street { get; set; }
         public string Building { get; set; }
-        public AddressTypeEnum AddressType { get; set; }
+        public AddressType AddressType { get; set; }
 
         public virtual Company Company { get; set; }
     }

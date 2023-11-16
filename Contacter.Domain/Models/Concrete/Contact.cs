@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Contacter.Domain.Models.Common;
 
-namespace Contacter.Domain.Models
+namespace Contacter.Domain.Models.Concrete
 {
-    public  class Contact : Entity
+    public class Contact : Entity
     {
         public int CompanyId { get; set; }
         public string ContactName { get; set; }

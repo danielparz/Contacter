@@ -30,7 +30,7 @@ namespace Contacter.Infrastructure.Repositories
             return UpdateObject(company);   
         }
 
-        public IQueryable<Company> GetAll()
+        public IQueryable<Company> GetAllCompanies()
         {
             return GetAll();
         }

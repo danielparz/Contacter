@@ -1,11 +1,11 @@
-﻿using Contacter.Domain.Models;
+﻿using Contacter.Domain.Models.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Contacter.Domain.Interfaces
+namespace Contacter.Domain.Interfaces.Common
 {
     public interface IBaseRepository<T> where T : Entity
     {

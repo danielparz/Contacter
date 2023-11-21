@@ -1,5 +1,5 @@
-﻿using Contacter.Domain.Interfaces;
-using Contacter.Domain.Models;
+﻿using Contacter.Domain.Interfaces.Common;
+using Contacter.Domain.Models.Common;
 using Contacter.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Contacter.Infrastructure.Repositories
+namespace Contacter.Infrastructure.Repositories.Abstract
 {
     public class BaseRepository<T> : IBaseRepository<T> where T : Entity
     {
@@ -42,7 +42,7 @@ namespace Contacter.Infrastructure.Repositories
         public void DeleteObject(int id)
         {
             var obj = dbSet.FirstOrDefault(x => x.Id == id);
-            if(obj != null)
+            if (obj != null)
             {
                 dbSet.Remove(obj);
                 _context.SaveChanges();
@@ -52,7 +52,7 @@ namespace Contacter.Infrastructure.Repositories
         public int UpdateObject(T entity)
         {
             var temp = dbSet.FirstOrDefault(x => x.Id == entity.Id);
-            if(temp != null)
+            if (temp != null)
             {
                 temp = entity;
                 _context.SaveChanges();

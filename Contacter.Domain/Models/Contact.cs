@@ -14,6 +14,6 @@ namespace Contacter.Domain.Models
         public string ContactDescription { get; set; }
         public string ContactPhone { get; set; }
 
-        public virtual Company Company { get; set; }
+        public Company Company { get; set; }
     }
 }

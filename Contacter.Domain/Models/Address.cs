@@ -16,6 +16,6 @@ namespace Contacter.Domain.Models
         public string Building { get; set; }
         public AddressTypeEnum AddressType { get; set; }
 
-        public virtual Company Company { get; set; }
+        public Company Company { get; set; }
     }
 }

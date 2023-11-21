@@ -15,6 +15,6 @@ namespace Contacter.Domain.Models
         public string Username { get; set; }
         public string Password { get; set; }
 
-        //public virtual ICollection<Company> Companies { get; set; }
+        //public ICollection<Company> Companies { get; set; }
     }
 }

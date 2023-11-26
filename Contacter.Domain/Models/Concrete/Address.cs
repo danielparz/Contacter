@@ -17,6 +17,6 @@ namespace Contacter.Domain.Models.Concrete
         public string Building { get; set; }
         public AddressType AddressType { get; set; }
 
-        public virtual Company Company { get; set; }
+        public Company Company { get; set; }
     }
 }

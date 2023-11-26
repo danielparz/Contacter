@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Contacter.Application.ViewModels.Address
 {
-    public class AddAddressVM
+    public class NewAddressVM
     {
         public int CompanyId { get; set; }
         public string PostCode { get; set; }

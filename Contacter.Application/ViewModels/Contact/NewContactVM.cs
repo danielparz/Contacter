@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Contacter.Application.ViewModels.Contact
 {
-    public class AddContactVM
+    public class NewContactVM
     {
         public int CompanyId { get; set; }
         public string ContactName { get; set; }

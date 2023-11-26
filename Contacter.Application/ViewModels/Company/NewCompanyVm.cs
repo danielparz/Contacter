@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Contacter.Application.ViewModels.Company
 {
-    public class AddCompanyVm
+    public class NewCompanyVm
     {
         public string CompanyName { get; set; }
         public string NIP { get; set; }

@@ -29,6 +29,11 @@ namespace Contacter.Infrastructure.Repositories.Abstract
             return entity.Id;
         }
 
+        public IQueryable<T> GetAllActive()
+        {
+            return dbSet.Where(x => x.IsDeleted == false);
+        }
+
         public IQueryable<T> GetAll()
         {
             return dbSet;

@@ -12,6 +12,7 @@ namespace Contacter.Domain.Interfaces.Common
         T? GetObjectById(int id);
         int AddObject(T entity);
         void DeleteObject(int id);
+        IQueryable<T> GetAllActive();
         IQueryable<T> GetAll();
         int UpdateObject(T entity);
     }

@@ -10,5 +10,6 @@ namespace Contacter.Application.ViewModels.Company
     {
         public int Id { get; set; }
         public string CompanyName { get; set; }
+        public string NIP { get; set; }
     }
 }

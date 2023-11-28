@@ -12,6 +12,7 @@ namespace Contacter.Application.Interfaces
         int AddContact(NewContactVM contact);
         void DeleteContact(int id);
         int UpdateContact(NewContactVM contact);
+        ListContactForListVM GetAllActiveContacts(); 
         ListContactForListVM GetContactsByCompanyId(int companyId);
     }
 }

@@ -12,8 +12,7 @@ namespace Contacter.Application.Interfaces
     {
         int AddCompany(NewCompanyVm company);
         int UpdateCompany(NewCompanyVm company);
-        void DeleteCompany(Company company);
-        Company GetCompanyById(int id);
+        void DeleteCompany(int companyId);
         CompanyDetailsVM GetCompanyDetails(int id);
         ListCompaniesForListVM ListCompaniesForListVM();
 

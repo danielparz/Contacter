@@ -14,49 +14,49 @@ namespace Contacter.Infrastructure.Repositories.Abstract
     public class BaseRepository<T> : IBaseRepository<T> where T : Entity
     {
         protected readonly Context _context;
-        private DbSet<T> dbSet;
+        private DbSet<T> _dbSet;
 
         public BaseRepository(Context context)
         {
             _context = context;
-            dbSet = _context.Set<T>();
+            _dbSet = _context.Set<T>();
         }
 
         public int AddObject(T entity)
         {
-            dbSet.Add(entity);
+            _dbSet.Add(entity);
             _context.SaveChanges();
             return entity.Id;
         }
 
         public IQueryable<T> GetAllActive()
         {
-            return dbSet.Where(x => x.IsDeleted == false);
+            return _dbSet.Where(x => x.IsDeleted == false);
         }
 
         public IQueryable<T> GetAll()
         {
-            return dbSet;
+            return _dbSet;
         }
 
         public T? GetObjectById(int id)
         {
-            return dbSet.FirstOrDefault(x => x.Id == id);
+            return _dbSet.FirstOrDefault(x => x.Id == id);
         }
 
         public void DeleteObject(int id)
         {
-            var obj = dbSet.FirstOrDefault(x => x.Id == id);
+            var obj = _dbSet.FirstOrDefault(x => x.Id == id);
             if (obj != null)
             {
-                dbSet.Remove(obj);
+                _dbSet.Remove(obj);
                 _context.SaveChanges();
             }
         }
 
         public int UpdateObject(T entity)
         {
-            var temp = dbSet.FirstOrDefault(x => x.Id == entity.Id);
+            var temp = _dbSet.FirstOrDefault(x => x.Id == entity.Id);
             if (temp != null)
             {
                 temp = entity;

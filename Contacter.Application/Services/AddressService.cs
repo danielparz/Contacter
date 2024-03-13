@@ -1,4 +1,6 @@
-﻿using Contacter.Application.Interfaces;
+﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
+using Contacter.Application.Interfaces;
 using Contacter.Application.ViewModels.Address;
 using Contacter.Domain.Interfaces.Concrete;
 using Contacter.Domain.Models.Concrete;
@@ -13,10 +15,12 @@ namespace Contacter.Application.Services
     public class AddressService : IAddressService
     {
         private readonly IAddressRepository _addressRepository;
+        private readonly IMapper _mapper;
 
-        public AddressService(IAddressRepository addressRepository)
+        public AddressService(IAddressRepository addressRepository, IMapper mapper)
         {
             _addressRepository = addressRepository;
+            _mapper = mapper;
         }
 
         public int AddAddress(NewAddressVM address)
@@ -66,26 +70,14 @@ namespace Contacter.Application.Services
 
         public ListAddressForListVM GetAllActiveAddresses()
         {
-            var addresses = _addressRepository.GetAllActive();
-            var result = new ListAddressForListVM();
-            result.Addresses = new List<AddressForListVM>();
-
-            foreach (var address in addresses)
+            var addresses = _addressRepository.GetAllActive().ProjectTo<AddressForListVM>(_mapper.ConfigurationProvider).ToList();
+            var addressesList = new ListAddressForListVM()
             {
-                var add = new AddressForListVM()
-                {
-                    Id = address.Id,
-                    AddressType = address.AddressType,
-                    PostCode = address.PostCode,
-                    City = address.City,
-                    Street = address.Street,
-                    Building = address.Building
-                };
-                result.Addresses.Add(add);
-            }
-            result.Count = result.Addresses.Count;
+                Addresses = addresses,
+                Count = addresses.Count
+            };
 
-            return result;
+            return addressesList;
         }
 
         public int UpdateAddress(UpdateAddressVM address)

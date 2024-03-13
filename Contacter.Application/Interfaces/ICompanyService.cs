@@ -10,8 +10,8 @@ namespace Contacter.Application.Interfaces
 {
     public interface ICompanyService
     {
-        int AddCompany(NewCompanyVm company);
-        int UpdateCompany(NewCompanyVm company);
+        int AddCompany(NewCompanyVM company);
+        int UpdateCompany(NewCompanyVM company);
         void DeleteCompany(int companyId);
         CompanyDetailsVM GetCompanyDetails(int id);
         ListCompaniesForListVM ListCompaniesForListVM();

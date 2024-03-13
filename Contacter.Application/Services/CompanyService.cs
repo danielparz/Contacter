@@ -3,7 +3,7 @@ using Contacter.Application.ViewModels.Address;
 using Contacter.Application.ViewModels.Company;
 using Contacter.Application.ViewModels.Contact;
 using Contacter.Domain.Interfaces.Concrete;
-using Contacter.Domain.Models;
+using Contacter.Domain.Models.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +22,7 @@ namespace Contacter.Application.Services
             _companyRepository = companyRepository;
         }
 
-        public int AddCompany(NewCompanyVm company)
+        public int AddCompany(NewCompanyVM company)
         {
             var result = new Company()
             {
@@ -105,7 +105,7 @@ namespace Contacter.Application.Services
             return result;
         }
 
-        public int UpdateCompany(NewCompanyVm company)
+        public int UpdateCompany(NewCompanyVM company)
         {
             var result = new Company();
             result.CompanyName = company.CompanyName;

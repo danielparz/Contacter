@@ -1,5 +1,5 @@
 ﻿using Contacter.Domain.Interfaces.Common;
-using Contacter.Domain.Models;
+using Contacter.Domain.Models.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;

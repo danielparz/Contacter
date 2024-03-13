@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Contacter.Domain.Models.Common;
 using Contacter.Domain.Models.Concrete;
 
-namespace Contacter.Domain.Models
+namespace Contacter.Domain.Models.Concrete
 {
     public class Company : Entity
     {

@@ -1,5 +1,5 @@
 ﻿using Contacter.Domain.Interfaces.Concrete;
-using Contacter.Domain.Models;
+using Contacter.Domain.Models.Concrete;
 using Contacter.Infrastructure.Data;
 using Contacter.Infrastructure.Repositories.Abstract;
 using System;
@@ -14,6 +14,6 @@ namespace Contacter.Infrastructure.Repositories.Common
     {
         public CompanyRepository(Context context) : base(context)
         {
-        }
+        }        
     }
 }

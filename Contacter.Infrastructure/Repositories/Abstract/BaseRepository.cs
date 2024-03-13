@@ -31,7 +31,7 @@ namespace Contacter.Infrastructure.Repositories.Abstract
 
         public IQueryable<T> GetAllActive()
         {
-            return _dbSet.Where(x => x.IsDeleted == false);
+            return _dbSet.Where(x => !x.IsDeleted);
         }
 
         public IQueryable<T> GetAll()

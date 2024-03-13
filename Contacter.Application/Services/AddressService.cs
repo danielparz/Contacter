@@ -88,10 +88,11 @@ namespace Contacter.Application.Services
             return result;
         }
 
-        public int UpdateAddress(NewAddressVM address)
+        public int UpdateAddress(UpdateAddressVM address)
         {
             var add = new Address()
             {
+                Id = address.Id,
                 CompanyId = address.CompanyId,
                 PostCode = address.PostCode,
                 City = address.City,

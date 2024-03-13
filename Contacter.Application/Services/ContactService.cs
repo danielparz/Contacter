@@ -14,6 +14,11 @@ namespace Contacter.Application.Services
     {
         private readonly IContactRepository _contactRepository;
 
+        public ContactService(IContactRepository contactRepository)
+        {
+            _contactRepository = contactRepository;
+        }   
+
         public int AddContact(NewContactVM contact)
         {
             var con = new Contact()

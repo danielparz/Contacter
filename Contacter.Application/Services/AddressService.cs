@@ -14,6 +14,11 @@ namespace Contacter.Application.Services
     {
         private readonly IAddressRepository _addressRepository;
 
+        public AddressService(IAddressRepository addressRepository)
+        {
+            _addressRepository = addressRepository;
+        }
+
         public int AddAddress(NewAddressVM address)
         {
             var add = new Address()

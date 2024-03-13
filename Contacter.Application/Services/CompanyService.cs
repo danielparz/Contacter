@@ -17,6 +17,11 @@ namespace Contacter.Application.Services
     {
         private readonly ICompanyRepository _companyRepository;
 
+        public CompanyService(ICompanyRepository companyRepository)
+        {
+            _companyRepository = companyRepository;
+        }
+
         public int AddCompany(NewCompanyVm company)
         {
             var result = new Company()

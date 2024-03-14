@@ -1,4 +1,6 @@
-﻿using Contacter.Application.Interfaces;
+﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
+using Contacter.Application.Interfaces;
 using Contacter.Application.ViewModels.Address;
 using Contacter.Application.ViewModels.Company;
 using Contacter.Application.ViewModels.Contact;
@@ -16,24 +18,25 @@ namespace Contacter.Application.Services
     public class CompanyService : ICompanyService
     {
         private readonly ICompanyRepository _companyRepository;
+        private readonly IAddressService _addressService;
+        private readonly IContactService _contactService;
+        private readonly IMapper _mapper;
 
-        public CompanyService(ICompanyRepository companyRepository)
+        public CompanyService(ICompanyRepository companyRepository, IMapper mapper, IAddressService addressService, IContactService contactService)
         {
             _companyRepository = companyRepository;
+            _mapper = mapper;
+            _addressService = addressService;
+            _contactService = contactService;
         }
 
         public int AddCompany(NewCompanyVM company)
         {
-            var result = new Company()
-            {
-                CompanyName = company.CompanyName,
-                NIP = company.NIP,
-                REGON = company.REGON,
-            };
+            var com = new Company();
+            com = _mapper.Map<Company>(company);
+            _companyRepository.AddObject(com);
 
-            _companyRepository.AddObject(result);
-
-            return result.Id;
+            return com.Id;
         }
 
         public void DeleteCompany(int companyId)
@@ -45,76 +48,33 @@ namespace Contacter.Application.Services
         {
             var company = _companyRepository.GetObjectById(id);
             var companyVM = new CompanyDetailsVM();
-
-            companyVM.Id = company.Id;
-            companyVM.NIP = company.NIP;
-            companyVM.REGON = company.REGON;
-            companyVM.CompanyName = company.CompanyName;
-
-            companyVM.Addresses = new ListAddressForListVM();
-            companyVM.Contacts = new ListContactForListVM();
-
-            foreach (var address in company.Addresses)
-            {
-                var add = new AddressForListVM()
-                {
-                    Id = address.Id,
-                    AddressType = address.AddressType,
-                    PostCode = address.PostCode,
-                    City = address.City,
-                    Street = address.Street,
-                    Building = address.Building
-                };
-                companyVM.Addresses.Addresses.Add(add);
-            }
-            foreach (var contact in company.Contacts)
-            {
-                var con = new ContactForListVM()
-                {
-                    Id = contact.Id,
-                    CompanyId = contact.CompanyId,
-                    ContactDescription = contact.ContactDescription,
-                    ContactEmail = contact.ContactEmail,
-                    ContactName = contact.ContactName,
-                    ContactPhone = contact.ContactPhone
-                };
-                companyVM.Contacts.Contacts.Add(con);
-            }
+            companyVM = _mapper.Map<CompanyDetailsVM>(company);
+            companyVM.Addresses = _addressService.GetAddressesByCompanyId(id);
+            companyVM.Contacts = _contactService.GetContactsByCompanyId(id);            
 
             return companyVM;
         }
 
         public ListCompaniesForListVM ListCompaniesForListVM()
         {
-            var companies = _companyRepository.GetAllActive();
-            var result = new ListCompaniesForListVM();
-            result.Companies = new List<CompanyForListVM>();
-
-            foreach (var company in companies)
+            var companies = _companyRepository.GetAllActive().ProjectTo<CompanyForListVM>(_mapper.ConfigurationProvider).ToList();
+            var result = new ListCompaniesForListVM()
             {
-                var companyVM = new CompanyForListVM()
-                {
-                    Id = company.Id,
-                    CompanyName = company.CompanyName,
-                    NIP = company.NIP
-                };
-                result.Companies.Add(companyVM);
-            }
-
-            result.Count = result.Companies.Count;
+                Companies = companies,
+                Count = companies.Count
+            };
+            
             return result;
         }
 
         public int UpdateCompany(NewCompanyVM company)
         {
-            var result = new Company();
-            result.CompanyName = company.CompanyName;
-            result.NIP = company.NIP;
-            result.REGON = company.REGON;
+            var com = new Company();
+            com = _mapper.Map<Company>(company);
 
-            _companyRepository.UpdateObject(result);
+            _companyRepository.UpdateObject(com);
 
-            return result.Id;
+            return com.Id;
         }
     }
 }

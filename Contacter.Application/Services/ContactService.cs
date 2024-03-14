@@ -1,4 +1,6 @@
-﻿using Contacter.Application.Interfaces;
+﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
+using Contacter.Application.Interfaces;
 using Contacter.Application.ViewModels.Contact;
 using Contacter.Domain.Interfaces;
 using Contacter.Domain.Models.Concrete;
@@ -13,22 +15,18 @@ namespace Contacter.Application.Services
     public class ContactService : IContactService
     {
         private readonly IContactRepository _contactRepository;
+        private readonly IMapper _mapper;
 
-        public ContactService(IContactRepository contactRepository)
+        public ContactService(IContactRepository contactRepository, IMapper mapper)
         {
             _contactRepository = contactRepository;
+            _mapper = mapper;
         }   
 
         public int AddContact(NewContactVM contact)
         {
-            var con = new Contact()
-            {
-                CompanyId = contact.CompanyId,
-                ContactDescription = contact.ContactDescription,
-                ContactEmail = contact.ContactEmail,
-                ContactName = contact.ContactName,
-                ContactPhone = contact.ContactPhone                
-            };
+            var con = new Contact();
+            con = _mapper.Map<Contact>(contact);
             _contactRepository.AddObject(con);
 
             return con.Id;
@@ -41,60 +39,32 @@ namespace Contacter.Application.Services
 
         public ListContactForListVM GetAllActiveContacts()
         {
-            var contacts = _contactRepository.GetAllActive();
-            var result = new ListContactForListVM();
-            result.Contacts = new List<ContactForListVM>();
-
-            foreach (var contact in contacts)
+            var contacts = _contactRepository.GetAllActive().ProjectTo<ContactForListVM>(_mapper.ConfigurationProvider).ToList();
+            var result  = new ListContactForListVM()
             {
-                var con = new ContactForListVM()
-                {
-                    Id = contact.Id,
-                    ContactDescription = contact.ContactDescription,
-                    ContactEmail = contact.ContactEmail,
-                    ContactName = contact.ContactName,
-                    ContactPhone = contact.ContactPhone
-                };
-                result.Contacts.Add(con);
-            }
+                Contacts = contacts,
+                Count = contacts.Count
+            };
 
-            result.Count = result.Contacts.Count;
             return result;
         }
 
         public ListContactForListVM GetContactsByCompanyId(int companyId)
         {
-            var contacts = _contactRepository.GetAllActive().Where(x => x.CompanyId == companyId);
-            var result = new ListContactForListVM();
-            result.Contacts = new List<ContactForListVM>();
-
-            foreach (var contact in contacts)
+            var contacts = _contactRepository.GetAllActive().Where(x => x.CompanyId == companyId).ProjectTo<ContactForListVM>(_mapper.ConfigurationProvider).ToList();
+            var result = new ListContactForListVM()
             {
-                var con = new ContactForListVM()
-                {
-                    Id = contact.Id,
-                    ContactDescription = contact.ContactDescription,
-                    ContactEmail = contact.ContactEmail,
-                    ContactName = contact.ContactName,
-                    ContactPhone = contact.ContactPhone
-                };
-                result.Contacts.Add(con);
-            }
+                Contacts = contacts,
+                Count = contacts.Count
+            };
 
-            result.Count = result.Contacts.Count;
             return result;
         }
 
         public int UpdateContact(NewContactVM contact)
         {
-            var con = new Contact()
-            {
-                CompanyId = contact.CompanyId,
-                ContactDescription = contact.ContactDescription,
-                ContactEmail = contact.ContactEmail,
-                ContactName = contact.ContactName,
-                ContactPhone = contact.ContactPhone
-            };
+            var con = new Contact();
+            con = _mapper.Map<Contact>(con);
             _contactRepository.UpdateObject(con);
 
             return con.Id;

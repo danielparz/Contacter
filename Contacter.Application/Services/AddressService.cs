@@ -25,17 +25,10 @@ namespace Contacter.Application.Services
 
         public int AddAddress(NewAddressVM address)
         {
-            var add = new Address()
-            {
-                CompanyId = address.CompanyId,
-                PostCode = address.PostCode,
-                City = address.City,
-                Street = address.Street,
-                Building = address.Building,
-                AddressType = address.AddressType
-            };
-
+            var add = new Address();
+            add = _mapper.Map<Address>(address);            
             _addressRepository.AddObject(add);
+
             return add.Id;
         }
 
@@ -44,26 +37,22 @@ namespace Contacter.Application.Services
             _addressRepository.DeleteObject(id);
         }
 
+        public AddressVM GetAddressById(int id)
+        {
+            var address = _addressRepository.GetObjectById(id);
+            var addressVm = _mapper.Map<AddressVM>(address);
+
+            return addressVm;
+        }
+
         public ListAddressForListVM GetAddressesByCompanyId(int companyId)
         {
-            var addresses = _addressRepository.GetAllActive().Where(x => x.CompanyId == companyId);
-            var result = new ListAddressForListVM();
-            result.Addresses = new List<AddressForListVM>();
-
-            foreach (var address in addresses)
+            var addresses = _addressRepository.GetAllActive().Where(x => x.CompanyId == companyId).ProjectTo<AddressForListVM>(_mapper.ConfigurationProvider).ToList();
+            var result = new ListAddressForListVM()
             {
-                var add = new AddressForListVM()
-                {
-                    Id = address.Id,
-                    AddressType = address.AddressType,
-                    PostCode = address.PostCode,
-                    City = address.City,
-                    Street = address.Street,
-                    Building = address.Building
-                };
-                result.Addresses.Add(add);
-            }
-            result.Count = result.Addresses.Count;
+                Addresses = addresses,
+                Count = addresses.Count
+            };
 
             return result;
         }
@@ -71,29 +60,21 @@ namespace Contacter.Application.Services
         public ListAddressForListVM GetAllActiveAddresses()
         {
             var addresses = _addressRepository.GetAllActive().ProjectTo<AddressForListVM>(_mapper.ConfigurationProvider).ToList();
-            var addressesList = new ListAddressForListVM()
+            var result = new ListAddressForListVM()
             {
                 Addresses = addresses,
                 Count = addresses.Count
             };
 
-            return addressesList;
+            return result;
         }
 
         public int UpdateAddress(UpdateAddressVM address)
         {
-            var add = new Address()
-            {
-                Id = address.Id,
-                CompanyId = address.CompanyId,
-                PostCode = address.PostCode,
-                City = address.City,
-                Street = address.Street,
-                Building = address.Building,
-                AddressType = address.AddressType
-            };
-
+            var add = new Address();
+            add = _mapper.Map<Address>(add);
             _addressRepository.UpdateObject(add);
+
             return add.Id;
         }
     }

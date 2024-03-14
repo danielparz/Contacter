@@ -12,6 +12,7 @@ namespace Contacter.Application.Interfaces
         int AddAddress(NewAddressVM address);
         void DeleteAddress(int id);
         int UpdateAddress(UpdateAddressVM address);
+        AddressVM GetAddressById(int id);
         ListAddressForListVM GetAllActiveAddresses();
         ListAddressForListVM GetAddressesByCompanyId(int companyId);
     }

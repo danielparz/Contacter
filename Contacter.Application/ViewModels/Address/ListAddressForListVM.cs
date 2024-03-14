@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Contacter.Application.ViewModels.Address
 {
-    public class ListAddressForListVM : IMapFrom<Contacter.Application.ViewModels.Address.AddressForListVM>
+    public class ListAddressForListVM
     {
         public List<AddressForListVM> Addresses { get; set; }
         public int Count { get; set; }        

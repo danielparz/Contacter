@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Contacter.Application.ViewModels.Address
 {
-    public class AddressForListVM : IMapFrom<Contacter.Domain.Models.Concrete.Address>
+    public class AddressVM : IMapFrom<Contacter.Domain.Models.Concrete.Address>
     {
         public int Id { get; set; }
         public AddressType AddressType { get; set; }
@@ -20,7 +20,7 @@ namespace Contacter.Application.ViewModels.Address
 
         public void Mapping(Profile profile)
         {
-            profile.CreateMap<Contacter.Domain.Models.Concrete.Address, AddressForListVM>()
+            profile.CreateMap<Contacter.Domain.Models.Concrete.Address, AddressVM>()
                 .ForMember(d => d.Id, opt => opt.MapFrom(b => b.Id))
                 .ForMember(d => d.AddressType, opt => opt.MapFrom(b => b.AddressType))
                 .ForMember(d => d.PostCode, opt => opt.MapFrom(b => b.PostCode))

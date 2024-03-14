@@ -47,12 +47,12 @@ namespace Contacter.Application.Services
         public CompanyDetailsVM GetCompanyDetails(int id)
         {
             var company = _companyRepository.GetObjectById(id);
-            var companyVM = new CompanyDetailsVM();
-            companyVM = _mapper.Map<CompanyDetailsVM>(company);
-            companyVM.Addresses = _addressService.GetAddressesByCompanyId(id);
-            companyVM.Contacts = _contactService.GetContactsByCompanyId(id);            
+            var result = new CompanyDetailsVM();
+            result = _mapper.Map<CompanyDetailsVM>(company);
+            result.Addresses = _addressService.GetAddressesByCompanyId(id);
+            result.Contacts = _contactService.GetContactsByCompanyId(id);            
 
-            return companyVM;
+            return result;
         }
 
         public ListCompaniesForListVM ListCompaniesForListVM()

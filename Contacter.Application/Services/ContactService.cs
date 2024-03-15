@@ -2,7 +2,7 @@
 using AutoMapper.QueryableExtensions;
 using Contacter.Application.Interfaces;
 using Contacter.Application.ViewModels.Contact;
-using Contacter.Domain.Interfaces;
+using Contacter.Domain.Interfaces.Common;
 using Contacter.Domain.Models.Concrete;
 using System;
 using System.Collections.Generic;

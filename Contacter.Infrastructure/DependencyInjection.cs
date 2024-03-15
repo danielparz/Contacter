@@ -1,5 +1,4 @@
-﻿using Contacter.Domain.Interfaces;
-using Contacter.Domain.Interfaces.Concrete;
+﻿using Contacter.Domain.Interfaces.Common;
 using Contacter.Infrastructure.Repositories.Common;
 using Microsoft.Extensions.DependencyInjection;
 using System;

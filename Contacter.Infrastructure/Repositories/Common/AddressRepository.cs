@@ -1,5 +1,5 @@
 ﻿using Contacter.Domain.Enums;
-using Contacter.Domain.Interfaces.Concrete;
+using Contacter.Domain.Interfaces.Common;
 using Contacter.Domain.Models.Concrete;
 using Contacter.Infrastructure.Data;
 using Contacter.Infrastructure.Repositories.Abstract;

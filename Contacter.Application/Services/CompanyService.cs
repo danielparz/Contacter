@@ -4,7 +4,7 @@ using Contacter.Application.Interfaces;
 using Contacter.Application.ViewModels.Address;
 using Contacter.Application.ViewModels.Company;
 using Contacter.Application.ViewModels.Contact;
-using Contacter.Domain.Interfaces.Concrete;
+using Contacter.Domain.Interfaces.Common;
 using Contacter.Domain.Models.Concrete;
 using System;
 using System.Collections.Generic;

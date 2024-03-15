@@ -32,8 +32,7 @@ namespace Contacter.Application.Services
 
         public int AddCompany(NewCompanyVM company)
         {
-            var com = new Company();
-            com = _mapper.Map<Company>(company);
+            var com = _mapper.Map<Company>(company);
             _companyRepository.AddObject(com);
 
             return com.Id;
@@ -55,7 +54,7 @@ namespace Contacter.Application.Services
             return result;
         }
 
-        public ListCompaniesForListVM ListCompaniesForListVM()
+        public ListCompaniesForListVM GetAllCompaniesForList()
         {
             var companies = _companyRepository.GetAllActive().ProjectTo<CompanyForListVM>(_mapper.ConfigurationProvider).ToList();
             var result = new ListCompaniesForListVM()
@@ -69,8 +68,7 @@ namespace Contacter.Application.Services
 
         public int UpdateCompany(NewCompanyVM company)
         {
-            var com = new Company();
-            com = _mapper.Map<Company>(company);
+            var com = _mapper.Map<Company>(company);
 
             _companyRepository.UpdateObject(com);
 

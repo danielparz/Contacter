@@ -14,7 +14,7 @@ namespace Contacter.Infrastructure.Repositories.Abstract
     public class BaseRepository<T> : IBaseRepository<T> where T : Entity
     {
         protected readonly Context _context;
-        private DbSet<T> _dbSet;
+        private readonly DbSet<T> _dbSet;
 
         public BaseRepository(Context context)
         {

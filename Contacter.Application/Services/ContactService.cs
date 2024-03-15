@@ -25,8 +25,7 @@ namespace Contacter.Application.Services
 
         public int AddContact(NewContactVM contact)
         {
-            var con = new Contact();
-            con = _mapper.Map<Contact>(contact);
+            var con = _mapper.Map<Contact>(contact);
             _contactRepository.AddObject(con);
 
             return con.Id;

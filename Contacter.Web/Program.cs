@@ -1,6 +1,5 @@
 using Contacter.Application;
 using Contacter.Domain.Interfaces;
-using Contacter.Domain.Interfaces.Concrete;
 using Contacter.Infrastructure;
 using Contacter.Infrastructure.Data;
 using Contacter.Infrastructure.Repositories.Common;

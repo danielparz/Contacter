@@ -14,7 +14,7 @@ namespace Contacter.Application.Interfaces
         int UpdateCompany(NewCompanyVM company);
         void DeleteCompany(int companyId);
         CompanyDetailsVM GetCompanyDetails(int id);
-        ListCompaniesForListVM ListCompaniesForListVM();
+        ListCompaniesForListVM GetAllCompaniesForList();
 
     }
 }

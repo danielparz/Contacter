@@ -66,13 +66,22 @@ namespace Contacter.Application.Services
             return result;
         }
 
-        public int UpdateCompany(NewCompanyVM company)
+        public int UpdateCompany(EditCompanyVM company)
         {
             var com = _mapper.Map<Company>(company);
 
             _companyRepository.UpdateObject(com);
 
             return com.Id;
+        }
+
+        public EditCompanyVM GetCompanyForEdit(int id)
+        {
+            var company = _companyRepository.GetObjectById(id);
+            var result = new EditCompanyVM();
+            result = _mapper.Map<EditCompanyVM>(company);
+
+            return result;
         }
     }
 }

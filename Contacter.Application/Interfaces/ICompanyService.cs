@@ -11,10 +11,10 @@ namespace Contacter.Application.Interfaces
     public interface ICompanyService
     {
         int AddCompany(NewCompanyVM company);
-        int UpdateCompany(NewCompanyVM company);
+        int UpdateCompany(EditCompanyVM company);
         void DeleteCompany(int companyId);
         CompanyDetailsVM GetCompanyDetails(int id);
         ListCompaniesForListVM GetAllCompaniesForList();
-
+        EditCompanyVM GetCompanyForEdit(int id);
     }
 }
